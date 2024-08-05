@@ -11,7 +11,6 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,9 +18,11 @@ import org.jetbrains.annotations.NotNull;
 @RequiredArgsConstructor
 public class Listener extends ListenerAdapter {
 
+    private static final Long DISCORD_JAVA_DEV_TESTS_ID = 1269727820821696656L;
+
     @Override
     public void onReady(@NotNull ReadyEvent event) {
-        Guild guild = event.getJDA().getGuildById(1269727820821696656L);
+        Guild guild = event.getJDA().getGuildById(DISCORD_JAVA_DEV_TESTS_ID);
         if (guild != null) guild
                 .upsertCommand(CommandEnum.SUM.getValue(), CommandEnum.SUM.getDescription())
                 .addOptions(

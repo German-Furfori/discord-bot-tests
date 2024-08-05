@@ -1,13 +1,12 @@
 package com.discord.bot.command;
 
-import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.OptionMapping;
-import org.jetbrains.annotations.NotNull;
-
 import static com.discord.bot.enums.CommandEnum.SUM;
 import static com.discord.bot.enums.OptionDataEnum.SUM_OPTION_1;
 import static com.discord.bot.enums.OptionDataEnum.SUM_OPTION_2;
+
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
 
 public class SumCommand extends ListenerAdapter {
 
