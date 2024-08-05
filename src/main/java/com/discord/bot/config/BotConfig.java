@@ -1,5 +1,6 @@
 package com.discord.bot.config;
 
+import com.discord.bot.command.SumCommand;
 import com.discord.bot.listener.Listener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -20,6 +21,7 @@ public class BotConfig {
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
         jda.addEventListener(new Listener());
+        jda.addEventListener(new SumCommand());
         return jda;
     }
 
