@@ -25,12 +25,14 @@ public class Listener extends ListenerAdapter {
     @Override
     public void onReady(@NotNull ReadyEvent event) {
         Guild guild = event.getJDA().getGuildById(DISCORD_JAVA_DEV_TESTS_ID);
-        if (guild != null) guild
-                .upsertCommand(CommandEnum.SUM.getValue(), CommandEnum.SUM.getDescription())
-                .addOptions(
-                        new OptionData(SUM_OPTION_1.getOptionType(), SUM_OPTION_1.getName(), SUM_OPTION_1.getDescription(), SUM_OPTION_1.getIsRequired()),
-                        new OptionData(SUM_OPTION_2.getOptionType(), SUM_OPTION_2.getName(), SUM_OPTION_2.getDescription(), SUM_OPTION_2.getIsRequired()))
-                .queue();
+        if (guild != null) {
+            guild.upsertCommand(CommandEnum.SUM.getValue(), CommandEnum.SUM.getDescription())
+                    .addOptions(
+                            new OptionData(SUM_OPTION_1.getOptionType(), SUM_OPTION_1.getName(), SUM_OPTION_1.getDescription(), SUM_OPTION_1.getIsRequired()),
+                            new OptionData(SUM_OPTION_2.getOptionType(), SUM_OPTION_2.getName(), SUM_OPTION_2.getDescription(), SUM_OPTION_2.getIsRequired()))
+                    .queue();
+            guild.upsertCommand(CommandEnum.EMBED.getValue(), CommandEnum.EMBED.getDescription()).queue();
+        }
     }
 
     @Override

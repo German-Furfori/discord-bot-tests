@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum CommandEnum {
 
-    SUM("sum", "Gives the sum of two numbers");
+    SUM("sum", "Gives the sum of two numbers"),
+
+    EMBED("embed", "Returns an embed");
 
     private final String value;
 
