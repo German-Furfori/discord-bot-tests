@@ -3,15 +3,15 @@ package com.discord.bot.command;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
-import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 import java.awt.*;
+import java.util.Map;
+import java.util.Random;
 
 import static com.discord.bot.enums.CommandEnum.*;
 import static com.discord.bot.enums.OptionDataEnum.SUM_OPTION_1;
@@ -22,6 +22,10 @@ import static com.discord.bot.enums.OptionDataEnum.SUM_OPTION_2;
 @RequiredArgsConstructor
 public class CommandManager extends ListenerAdapter {
 
+    private final Random rand = new Random();
+
+    private final Map<String, String> rpsResponse = Map.of("1", "Rock", "2", "Paper", "3", "Scissor");
+
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         if (SUM.getValue().equals(event.getName())) doSum(event);
@@ -31,9 +35,11 @@ public class CommandManager extends ListenerAdapter {
 
     @Override
     public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
-        if ("rock-button".equals(event.getButton().getId())) event.reply("Rock").queue();
-        if ("paper-button".equals(event.getButton().getId())) event.reply("Paper").queue();
-        if ("scissor-button".equals(event.getButton().getId())) event.reply("Scissors").queue();
+        Integer randomNumber = rand.nextInt(3) + 1;
+        String response = rpsResponse.get(randomNumber.toString());
+        if ("rock-button".equals(event.getButton().getId())) event.reply(response).queue();
+        if ("paper-button".equals(event.getButton().getId())) event.reply(response).queue();
+        if ("scissor-button".equals(event.getButton().getId())) event.reply(response).queue();
     }
 
     private void doSum(SlashCommandInteractionEvent event) {
