@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
+import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -32,6 +33,7 @@ public class Listener extends ListenerAdapter {
                             new OptionData(SUM_OPTION_2.getOptionType(), SUM_OPTION_2.getName(), SUM_OPTION_2.getDescription(), SUM_OPTION_2.getIsRequired()))
                     .queue();
             guild.upsertCommand(CommandEnum.EMBED.getValue(), CommandEnum.EMBED.getDescription()).queue();
+            guild.upsertCommand(CommandEnum.RPS.getValue(), CommandEnum.RPS.getDescription()).queue();
         }
     }
 

@@ -9,7 +9,9 @@ public enum CommandEnum {
 
     SUM("sum", "Gives the sum of two numbers"),
 
-    EMBED("embed", "Returns an embed");
+    EMBED("embed", "Returns an embed"),
+
+    RPS("rps", "Returns an embed with buttons");
 
     private final String value;
 
